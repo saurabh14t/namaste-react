@@ -1,0 +1,124 @@
+Chapter 1:-->
+1. We will writer React.createElement("h1", {id:"heading"},"Namaste React");  (React Element is an Object)
+        1st is header or tag we want to use
+        2nd is attribute of that tag
+        3rd is children
+2. When we render this element to DOM it becomes HTML
+
+
+Chapter 2:--> 
+package.json is a configuration file for package manager.
+Bundler (webpack, parcel, veet) bundles the app so that it can be shipped to production
+2 type of dependency. dev dependency and another is normal dependency
+dev dependeny is required in development. Normal dependency is required in production also.
+parcel is a beast
+transitive dependency
+^  carat before version means if new minor version parcel will automatically upgrade its version
+if I have put tilde(~) if new major version parcel will automatically upgrade its version
+package.json keep the version our dependencies. (not exact version)
+package-lock.json - keep a track of exact version node package it has been installed. 
+integrity in the package-lock.json is hashed version which check whatever version we have used/installed in local same is used in production.
+if we have package.json and package-lock.json we can recreate our node modules.
+we don't required to add node modules in the git as we can recreate it will npm install.
+gitignore file we keep the file that we don't want to deploy in git
+npx - executing a package
+cdn link is not the preferred way to install react
+parcel - 
+        Dev Build., Local Server, Hot Module Replacement (HMR). File watching Algoritm (written in C++), Caching for faster builds
+        image optimization, Minification, Bundling, Compress the file, consistent hashing, code splitting, Differential bundling - to support older browser, diagnstic, Error handling, host a env in https, Tree Shaking algorith - remove unused code, Different build for dev and prod, for prod build - npx parcel build index.html
+        
+Chapter 3:--> 
+1. npm run start and npm start is same. In the backend it will call npx parcel index.html
+2. JSX is not HTML in Javascript. JSX is html-like sysntax. JSX is an element.
+3. JSX is transpiled before it reache before it reaches the JS. It is done by Parcel. It gives it to Babel. Babel transpiles --> React.createElement --> JS Object --> HTML Element (render)
+4. If we have to give attribute to JSX we have to use Camel Case (For eg - className instead of class in HTML)
+5. (Homework) Various tag of html in JSX?
+6. If our code is more than 1 line we have to wrap our code with bracket. This is required for babel to understand from where it     starts and where it ends.
+7. Components --> Class Based Components (Old Way) & Functional Components (New Way)
+8. Functional component is a normal javascript function which return some JSX code.
+9. If we use curly branket inside jsx we can use any javscript expression inside it.
+10. JSX take care of attack (Cross site scripting)
+11. We can call a component inside another component by usoing curly braces by calling tha function for eg = {Title()}
+
+
+Chapter 4:-->
+1. props (property) are like just normal arguments to the functions.
+2. props is an Object.
+3. Json Viewer Chrome extention
+4. Config Driven UI (Controlling the UI using the config.)
+5. React says that they don't recomment using index as a key while looping through as it will negative impact the performance.
+   -- https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
+
+Chapter 5:-->
+2 types of export/import
+Named Export - export --> export name of variableorcomponent
+               import --> inport {variableorcomponent} from 'pathofcomponent'
+    
+Default export - export --> export default nameofvariableorcomponents
+                 import --> import nameofvariableorcomponents from 'pathofcomponent'
+
+can we do default and named export for same variable?
+
+Hooks:-
+Normal JS Functions
+-- useState() - state variable in React
+-- useEffect()
+
+React is fast because it is doing Efficient DOM manipulation.
+
+whenever state variables changes in React it re renders the components.
+
+When we are calling the 2nd valu in usestate it will check the difference and re-renders the components.
+
+React Alrorithm -> Reconciliation algorithm (React Fiber) -- (React 16) - New way to finding the diff and updating the node.
+acdlite  github link for react fiber -- https://github.com/acdlite/react-fiber-architecture
+
+from 7 card --> UI changes to 3 card  
+React creat a Obect for an component.
+        Actual DOM of different tag (Normal JS Object)
+  - react create a Virtual DOM 
+    Virtual DOM Representation of Actual DOM.
+
+Diff Algorithm: --> Finds out the different between updated Virtual DOM and previous Virtual DOM.
+                    It will find the difference and then update the actual DOM.
+
+
+Chapter 6:-->
+MonoLith Architecture and MicroService Architecture
+        MonoLith Architecture -- All the things where written in one single large Project.
+        MicroService Architecture -- We have different service for doing each job. All these combined together form a big app.
+                                it follows Single responsibility principle. These are called seperation of concerns. No service is interfering with each other.
+
+As soon the page load we can fetch the data and make the API call.--> 
+1. Loads --> API call --> Render
+2. Loads --> Render --> API call --> re-render the UI with the data (In react we will use this approach. This will give bteer approach)
+
+In React first body component is called. Then useEffect is called.
+
+Browser is not allowing us to call API outside of same origin i.e from one origin to another origin.
+
+Shimmer UI
+
+When react re-renders it renders a component again. 
+
+whenever state variable update, React triggers a reconciliation cycle (re renders a component)
+
+React Fiber is a new reconciliation process to effecientely manipulate the DOM.
+
+
+Chapter 7:-->
+Without the dependency array useEffect is called everytime my components renders. 
+When dependency array the behaviour changes.
+When the dependency array is empty then useEffect is called on only once in the initial render.
+When we put anything in an dependency array then it will be called only called after everytime that value is updated.(for eg btnName)
+
+useState is always called inside functional compenents.
+Should call at the start.
+We should not call useState inside if-else, for loop, inside a function. This will create inconsistencies inside the code
+
+We should never use anchor tag in React because it refresh whole page.
+
+2 types of Routing in web apps
+1. Client Side routing - Not make any network call when going to different page.
+2. Server Side routing - Make a network call and page is coming from server.
+
